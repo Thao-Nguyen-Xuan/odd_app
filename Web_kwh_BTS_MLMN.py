@@ -13,7 +13,7 @@ from sklearn.ensemble import IsolationForest
 st.title("TOOL xem thông tin điện trạm BTS ký HĐ trực tiếp với EVN miền Nam")
 
 global password
-password=st.secrets("pass_EVNSPC")
+password=st.secrets["pass_EVNSPC"]
 
 # Function to view info the electricity in daily
 def day_view_kwh():
