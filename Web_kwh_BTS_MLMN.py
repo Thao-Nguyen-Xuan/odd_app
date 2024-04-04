@@ -12,8 +12,12 @@ from sklearn.ensemble import IsolationForest
 # Streamlit UI
 st.title("TOOL xem thông tin điện trạm BTS ký HĐ trực tiếp với EVN miền Nam")
 
+global password
+password=st.secrets("pass_EVNSPC")
+
 # Function to view info the electricity in daily
 def day_view_kwh():
+    global password
     if not MaKH or MaKH.strip() == "":
         st.warning("Vui lòng nhập đầy đủ thông tin Mã khách hàng (PB hoặc PK, 13 chữ) bên dưới")
         return
@@ -26,7 +30,7 @@ def day_view_kwh():
         "MaDonViKH": "MOBIPHONEMLMN",
         "MaKhachHang": MaKH,
         "TenDangNhap": MaKH,
-        "MatKhau": "Mbf#1234",
+        "MatKhau": password,
         "MaChucNang": "DOGHIXA",
         "TuNgayChiSoChot": From_date.strftime("%d-%m-%Y"),
         "DenNgayChiSoChot": To_date.strftime("%d-%m-%Y")
@@ -117,6 +121,7 @@ def day_view_kwh():
 
 # Function to view info the electricity in daily
 def day_get_kwh():
+    global password
     # Record the start time
     start_time = time.time()
     # Đọc dữ liệu từ tệp Excel
@@ -146,7 +151,7 @@ def day_get_kwh():
     # Common JSON data
     json_data_common = {
         "MaDonViKH": "MOBIPHONEMLMN",
-        "MatKhau": "Mbf#1234",
+        "MatKhau": password,
         "MaChucNang": "DOGHIXA",
         "TuNgayChiSoChot": From_date.strftime("%d-%m-%Y"),
         "DenNgayChiSoChot": To_date.strftime("%d-%m-%Y")
@@ -239,6 +244,7 @@ def day_get_kwh():
 
 # Function to view info the electricity in monthly
 def month_view_kwh():
+    global password
     if not MaKH or MaKH.strip() == "":
         st.warning("Vui lòng nhập đầy đủ thông tin Mã khách hàng (PB hoặc PK, 13 chữ) bên dưới")
         return
@@ -251,7 +257,7 @@ def month_view_kwh():
         "MaDonViKH": "MOBIPHONEMLMN",
         "MaKhachHang": MaKH,
         "TenDangNhap": MaKH,
-        "MatKhau": "Mbf#1234",
+        "MatKhau": password,
         "MaChucNang": "HOADONCT",
         "Ky": "1",
         "Nam": Year
@@ -370,6 +376,7 @@ def month_view_kwh():
                 st.pyplot(fig)
     
 def month_get_kwh():
+    global password
     # Record the start time
     start_time = time.time()
     # Đọc dữ liệu từ tệp Excel
@@ -399,7 +406,7 @@ def month_get_kwh():
     # Common JSON data
     json_data_common = {
         "MaDonViKH": "MOBIPHONEMLMN",
-        "MatKhau": "Mbf#1234",
+        "MatKhau": password,
         "MaChucNang": "HOADONCT",
         "Ky": "1"
     }
