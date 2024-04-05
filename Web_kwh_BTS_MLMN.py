@@ -363,7 +363,7 @@ def month_view_kwh():
                 st.dataframe(result_df_split,hide_index=True)
                 
                 # Sắp xếp DataFrame theo thời gian để vẽ biểu đồ đúng thứ tự thời gian
-                result_df_split = result_df_split.sort_values(by='Thang')
+                #result_df_split = result_df_split.sort_values(by='Thang')
                 result_df_split = result_df_split.sort_values(by='money')
 
                 # Vẽ biểu đồ tiền điện theo tháng
