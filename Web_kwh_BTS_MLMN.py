@@ -364,6 +364,7 @@ def month_view_kwh():
                 
                 # Sắp xếp DataFrame theo thời gian để vẽ biểu đồ đúng thứ tự thời gian
                 result_df_split = result_df_split.sort_values(by='Thang')
+                result_df_split = result_df_split.sort_values(by='money')
 
                 # Vẽ biểu đồ tiền điện theo tháng
                 fig, ax = plt.subplots(figsize=(10, 6))
@@ -372,6 +373,7 @@ def month_view_kwh():
                 ax.set_xlabel('Tháng')
                 ax.set_ylabel('Số tiền')
                 ax.tick_params(axis='x', rotation=0)  # Xoay nhãn trục x để dễ đọc hơn
+                #ax.invert_yaxis()  # Đảo ngược hướng của trục y
                 plt.tight_layout()
                 st.pyplot(fig)
     
