@@ -366,14 +366,14 @@ def month_view_kwh():
                 # Loại bỏ dấu phẩy từ các giá trị trong cột 'money'
                 result_df_split['money'] = result_df_split['money'].str.replace(',', '')
                 result_df_split['money'] = result_df_split['money'].astype(float)
-                result_df_split['Thang'] = result_df_split['Thang'].astype(float)
+                result_df_split['Thang'] = result_df_split['Thang'].astype(int)
 
                 # Vẽ biểu đồ tiền điện theo tháng
                 fig, ax = plt.subplots(figsize=(10, 6))
                 ax.plot(result_df_split['Thang'], result_df_split['money'], marker='o', linestyle='-')
                 ax.set_title(f'Biểu đồ số tiền theo tháng của MaKH: {MaKH}')
                 ax.set_xlabel('Tháng')
-                ax.set_ylabel('Số tiền')
+                ax.set_ylabel('Số tiền (triệu đồng)')
                 ax.tick_params(axis='x', rotation=0)  # Xoay nhãn trục x để dễ đọc hơn
                 plt.tight_layout()
                 st.pyplot(fig)
