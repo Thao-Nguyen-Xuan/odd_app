@@ -374,6 +374,16 @@ def month_view_kwh():
                 ax.tick_params(axis='x', rotation=0)  # Xoay nhãn trục x để dễ đọc hơn
                 plt.tight_layout()
                 st.pyplot(fig)
+
+                # Vẽ biểu đồ tiền điện theo tháng
+                fig, ax = plt.subplots(figsize=(10, 6))
+                ax.plot(result_df_split['Thang'], result_df_split['money'], marker='o', linestyle='-')
+                ax.set_title(f'Biểu đồ số tiền theo tháng của MaKH: {MaKH}')
+                ax.set_xlabel('Tháng')
+                ax.set_ylabel('Số tiền')
+                ax.tick_params(axis='x', rotation=0)  # Xoay nhãn trục x để dễ đọc hơn
+                plt.tight_layout()
+                st.pyplot(fig)
     
 def month_get_kwh():
     global password
