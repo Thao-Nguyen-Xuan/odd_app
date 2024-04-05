@@ -362,10 +362,9 @@ def month_view_kwh():
                 st.markdown("**Bảng kết quả như sau:**")
                 st.dataframe(result_df_split,hide_index=True)
                 
-                # Sắp xếp DataFrame theo thời gian để vẽ biểu đồ đúng thứ tự thời gian
-                #result_df_split = result_df_split.sort_values(by='Thang')
-                #result_df_split = result_df_split.sort_values(by='money')
                 # Chuyển đổi cột 'money' và 'Thang' sang số thực
+                # Loại bỏ dấu phẩy từ các giá trị trong cột 'money'
+                result_df_split['money'] = result_df_split['money'].str.replace(',', '')
                 result_df_split['money'] = result_df_split['money'].astype(float)
                 result_df_split['Thang'] = result_df_split['Thang'].astype(float)
 
@@ -376,7 +375,6 @@ def month_view_kwh():
                 ax.set_xlabel('Tháng')
                 ax.set_ylabel('Số tiền')
                 ax.tick_params(axis='x', rotation=0)  # Xoay nhãn trục x để dễ đọc hơn
-                #ax.invert_xaxis()  # Đảo ngược hướng của trục x
                 plt.tight_layout()
                 st.pyplot(fig)
     
