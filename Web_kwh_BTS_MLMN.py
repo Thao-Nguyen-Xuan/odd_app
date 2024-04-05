@@ -372,6 +372,7 @@ def month_view_kwh():
                 ax.set_xlabel('Tháng')
                 ax.set_ylabel('Số kwh')
                 ax.tick_params(axis='x', rotation=0)  # Xoay nhãn trục x để dễ đọc hơn
+                ax.invert_yaxis()  # Đảo ngược hướng của trục y
                 plt.tight_layout()
                 st.pyplot(fig)
 
