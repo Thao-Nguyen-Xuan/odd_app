@@ -365,17 +365,6 @@ def month_view_kwh():
                 # Sắp xếp DataFrame theo thời gian để vẽ biểu đồ đúng thứ tự thời gian
                 result_df_split = result_df_split.sort_values(by='Thang')
 
-                # Vẽ biểu đồ kwh theo tháng
-                fig, ax = plt.subplots(figsize=(10, 6))
-                ax.plot(result_df_split['Thang'], result_df_split['kwh'], marker='o', linestyle='-')
-                ax.set_title(f'Biểu đồ số kWh theo tháng của MaKH: {MaKH}')
-                ax.set_xlabel('Tháng')
-                ax.set_ylabel('Số kwh')
-                ax.tick_params(axis='x', rotation=0)  # Xoay nhãn trục x để dễ đọc hơn
-                ax.invert_yaxis()  # Đảo ngược hướng của trục y
-                plt.tight_layout()
-                st.pyplot(fig)
-
                 # Vẽ biểu đồ tiền điện theo tháng
                 fig, ax = plt.subplots(figsize=(10, 6))
                 ax.plot(result_df_split['Thang'], result_df_split['money'], marker='o', linestyle='-')
@@ -411,8 +400,8 @@ def month_get_kwh():
     st.empty()
     st.markdown("**Thông tin của file MaKH tải lên:**")
     st.write(f"Có tổng cộng {num_rows} hàng. Trong đó:")
-    st.write("-Số MaKH có dữ liệu hợp lệ là:",num_unique_MaKH)
-    st.write("-Số MaKH có dữ liệu không hợp lệ (null-để trống) là:",num_rows_null)
+    st.write("- Số MaKH có dữ liệu hợp lệ (đã bỏ duplicate) là:",num_unique_MaKH)
+    st.write("- Số MaKH có dữ liệu không hợp lệ là:",num_rows_null)
 
     # Common JSON data
     json_data_common = {
@@ -547,8 +536,8 @@ def month_get_kwh():
     st.empty()
     st.markdown("**Kết quả lấy thông tin điện tiêu thụ của trạm BTS, phản hồi từ web: https://cskh.evnspc.vn như sau**")
     st.write(f"Có tổng cộng {num_unique_MaKH} MaKH đã có phản hồi. Trong đó:")
-    st.write("-Số MaKH có dữ liệu OK là:",num_rows_OK)
-    st.write("-Số MaKH có dữ liệu lỗi là:",num_rows_Error)
+    st.write("- Số MaKH có dữ liệu OK là:",num_rows_OK)
+    st.write("- Số MaKH có dữ liệu lỗi là:",num_rows_Error)
 
     # Record the end time
     end_time = time.time()
